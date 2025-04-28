@@ -1,11 +1,10 @@
-// server.js
-
 const express = require('express');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
 const port = process.env.PORT || 3004;
 
+app.set('trust proxy', 1);     // <-- dann trust proxy setzen
 // Logfile Pfad
 const LOG_FILE = './conversation_logs.txt';
 
