@@ -4,8 +4,14 @@ services:
   app:
     build: .
     ports:
-      - "3004:3004"
+      - "65030:3004"
     volumes:
       - .:/app
     environment:
       - NODE_ENV=production
+    networks:
+      - trafficlog
+
+networks:
+  trafficlog:
+    driver: bridge
