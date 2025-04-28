@@ -10,6 +10,7 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
+                        docker rm -f chatgpt-logger || true
                 sh 'docker run -d -p 3004:3004 --name chatgpt-logger chatgptlogger'
             }
         }
