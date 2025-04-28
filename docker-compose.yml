@@ -4,7 +4,7 @@ services:
   chatgpt-logger:
     build: .
     ports:
-      - "65030:3004"
+      - "3004:3004"
     volumes:
       - .:/app
     environment:
