@@ -5,6 +5,14 @@ const app = express();
 const port = process.env.PORT || 3004;
 
 app.set('trust proxy', 1);     // <-- dann trust proxy setzen
+
+// Middleware: HTTP -> HTTPS Weiterleitung (optional, falls du es erzwingen willst)
+app.use((req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect('https://' + req.headers.host + req.url);
+    }
+    next();
+});
 // Logfile Pfad
 const LOG_FILE = './conversation_logs.txt';
 
